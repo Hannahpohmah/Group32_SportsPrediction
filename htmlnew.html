@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Predictor</title>
+</head>
+<body>
+    <h1>Player Predictor</h1>
+    <form action="/" method="post">
+
+        <br>
+        <label for="potential">Potential:</label>
+        <input type="number" id="potential" name="potential" required>
+        <br>
+
+        <br>
+        <label for="wage_eur">Wage (EUR):</label>
+        <input type="number" id="wage_eur" name="wage_eur" required>
+        <br>
+
+        <br>
+        <label for="Age">Age:</label>
+        <input type="number" id="Age" name="Age" required>
+        <br>
+
+        <br>
+        <label for="international_reputation">international_reputation:</label>
+        <input type="number" id="international_reputation" name="international_reputation" required>
+        <br>
+
+        <br>
+        <label for="release_clause_eur">release_clause_eur:</label>
+        <input type="number" id="release_clause_eur" name="release_clause_eur" required>
+        <br>
+
+        <br>
+        <label for="shooting">shooting:</label>
+        <input type="number" id="shooting" name="shooting" required>
+        <br>
+
+        <br>
+        <label for="passing">passing:</label>
+        <input type="number" id="passing" name="passing" required>
+        <br>
+
+        <br>
+        <label for="dribbling">dribbling:</label>
+        <input type="number" id="dribbling" name="dribbling" required>
+        <br>
+
+        <br>
+        <label for="physic">physic:</label>
+        <input type="number" id="physic" name="physic" required>
+        <br>
+
+        <br>
+        <label for="attacking_crossing">attacking_crossing:</label>
+        <input type="number" id="attacking_crossing" name="attacking_crossing" required>
+        <br>
+
+        <br>
+        <label for="attacking_shot_passing">attacking_shot_passing:</label>
+        <input type="number" id="attacking_shot_passing" name="attacking_shot_passing" required>
+        <br>
+
+        <br>
+        <label for="skill_curve">skill_curve:</label>
+        <input type="number" id="skill_curve" name="skill_curve" required>
+        <br>
+
+        <br>
+        <label for="skill_long_passing">skill_long_passing:</label>
+        <input type="number" id="skill_long_passing" name="skill_long_passing" required>
+        <br>
+
+        <br>
+        <label for="skill_ball_control">skill_ball_control:</label>
+        <input type="number" id="skill_ball_control" name="skill_ball_control" required>
+        <br>
+
+        <br>
+        <label for="movement_reactions">movement_reactions:</label>
+        <input type="number" id="movement_reactions" name="movement_reactions" required>
+        <br>
+
+        <br>
+        <label for="power_shot_power">power_shot_power:</label>
+        <input type="number" id="power_shot_power" name="power_shot_power" required>
+        <br>
+
+        <br>
+        <label for="power_long_shot">power_long_shot:</label>
+        <input type="number" id="power_long_shot" name="power_long_shot" required>
+        <br>
+
+        <br>
+        <label for="mentality_aggression">mentality_aggression:</label>
+        <input type="number" id="mentality_aggression" name="mentality_aggression" required>
+        <br>
+
+        <br>
+        <label for="mentality_vision">mentality_vision:</label>
+        <input type="number" id="mentality_vision" name="mentality_vision" required>
+        <br>
+
+        <br>
+        <label for="mentality_composure">mentality_composure:</label>
+        <input type="number" id="mentality_composure" name="mentality_composure" required>
+        <br>
+
+        <br>
+        <input type="submit" value="Predict">
+        <br>
+
+    </form>
+    <p>{{ prediction }}</p>
+    <p>{{ accuracy }}</p>
+</body>
+</html>
