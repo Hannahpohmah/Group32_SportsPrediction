@@ -3,13 +3,14 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 import numpy as np
 model_file_path = 'C:\\Users\\hanna\\Downloads\\deployment\\best_model.plk'
-sc= 'C:\\Users\\hanna\\Downloads\\deployment\\scaler.joblib'
+scaler_path = 'C:\\Users\\hanna\\Downloads\\deployment\\scaler.joblib'
 from joblib import load
+
 # Load the pickled model
 with open(model_file_path, 'rb') as f:
     best_model_loaded = pickle.load(f)
 
-scaler = load(sc)
+scaler = load(scaler_path)
 
 st.title("Machine Learning Model for player prediction")
 
@@ -36,22 +37,26 @@ def main():
     if st.button("Predict"):
         # Make predictions based on user input
         user_input = np.array([
-    value_eur, release_clause_eur, age, potential, movement_reactions, wage_eur,
-    defending, club_name,mentality_interceptions,league_name, attacking_crossing, goalkeeping_diving,
-    mentality_composure, goalkeeping_reflexes, defending_marking_awareness,
-    goalkeeping_positioning, defending_standing_tackle, mentality_penalties
-]).reshape(1,-1)
+            value_eur, release_clause_eur, age, potential, movement_reactions, wage_eur,
+            defending, club_name, mentality_interceptions,league_name, attacking_crossing, goalkeeping_diving,
+            mentality_composure, goalkeeping_reflexes, defending_marking_awareness,
+            goalkeeping_positioning, defending_standing_tackle, mentality_penalties
+        ]).reshape(1, -1)
 
+        # Label encode 'club_name' and 'league_name'
         label_encoder = LabelEncoder()
-        user_input['club_name'] = label_encoder.fit_transform(user_input['club_name'])
-        user_input['league_name'] = label_encoder.fit_transform(user_input['league_name'])
+        user_input[:, 7] = label_encoder.fit_transform(user_input[:, 7])
+        user_input[:, 9] = label_encoder.fit_transform(user_input[:, 9])
 
-        input_features=scaler.transform(user_input)
+        # Scale the input features
+        input_features = scaler.transform(user_input)
+
         prediction = best_model_loaded.predict(input_features)
-        
+
         # Display the prediction
         st.write(f"Predicted Value: {prediction[0]} EUR")
 
 if __name__ == "__main__":
     main()
+
 
