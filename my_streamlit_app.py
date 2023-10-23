@@ -1,4 +1,5 @@
 import streamlit as st
+from sklearn.preprocessing import LabelEncoder
 import pickle
 import numpy as np
 model_file_path = 'C:\\Users\\hanna\\Downloads\\deployment\\best_model.plk'
@@ -42,7 +43,12 @@ def main():
 ]).reshape(1,-1)
 
         input_features=scaler.transform(user_input)
-        
+
+# Encode categorical variables
+        label_encoder = LabelEncoder()
+        user_input['club_name'] = label_encoder.fit_transform(user_input['club_name'])
+        user_input['league_name'] = label_encoder.fit_transform(user_input['league_name'])
+        input_features=scaler.transform(user_input)
         prediction = best_model_loaded.predict(input_features)
         
         # Display the prediction
